@@ -9,8 +9,10 @@ import 'src/menu.dart';
 import 'src/provider_counter.dart';
 import 'src/dynamic_form_provider.dart';
 import 'src/sample_provider_3.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'src/classes/routes.dart' show Router, mainRoute, dynamicFormWithProvider, 
   dynamicFormBasic;
+import 'src/classes/fcm-notif.dart' show FCMnotif;
 
 /*
 void main () => runApp(DynamicListForm());
@@ -20,8 +22,14 @@ void main () => runApp(DynamicListForm());
 void main() => runApp(MainApp());
 
 class MainApp extends StatelessWidget {
+
+  MainApp({Key key}): super(key: key){
+    FCMnotif.listen();
+  }
+  
   @override
   Widget build(BuildContext context) {
+    print("BUILD MAIN");
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       /*home: MyApp()*/
